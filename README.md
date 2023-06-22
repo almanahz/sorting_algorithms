@@ -1,2 +1,2 @@
 # sorting_algorithms
-This repository implements various sorting algorithms
+This repository contains codes that implements various sorting algorithms
