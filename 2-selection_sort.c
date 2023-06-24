@@ -28,6 +28,7 @@ void selection_sort(int *array, size_t size)
 			swap = array[op];
 			array[op] = array[i];
 			array[ip] = swap;
+			print_array(array, size);
 		}
 	}
 }
