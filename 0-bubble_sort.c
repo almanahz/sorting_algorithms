@@ -8,11 +8,12 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	int i, j, temp, a, flag;
+	int i, j
+	size_t temp, flag;
 
 	if (array == NULL || size < 2)
 	return;
-	
+
 	for (i = 0; i < size; i++)
 	{
 		flag = 0;
@@ -26,8 +27,8 @@ void bubble_sort(int *array, size_t size)
 				flag = 1;
 				print_array(array, size);
 			}
-			if (flag == 0)
-			break;
 		}
+		if (flag == 0)
+			break;
 	}
 }
