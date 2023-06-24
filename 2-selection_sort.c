@@ -19,7 +19,7 @@ void selection_sort(int *array, size_t size)
 		min = op;
 		for (ip = op + 1; ip < size; ip++)
 		{
-			if (array[ip] < array[op])
+			if (array[ip] < array[min])
 				min = ip;
 		}
 
