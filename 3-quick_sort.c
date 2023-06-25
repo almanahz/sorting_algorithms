@@ -17,6 +17,7 @@ void swap(int *n, int *m)
 /**
  * pivot_point - returns the pivot point where the partion will be created
  * implements the Lomuto partition scheme
+ * @array: the array to be sorted
  * @low: the lowest index in the current partition
  * @high: the highest index in the current partition
  * Return: the new pivot index location for partitioning
@@ -24,7 +25,7 @@ void swap(int *n, int *m)
 int pivot_point(int array[], int low, int high)
 {
 	int pivot_value = array[high], i = low - 1, j;
-	
+
 	for (j = low; j < high; j++)
 	{
 		if (array[j] <= pivot_value)
