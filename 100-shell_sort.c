@@ -1,22 +1,20 @@
 #include "sort.h"
+
 /**
  * shell_sort - Sorts an array of integers using shell sort algorithm
  *
  * @array: The array to be printed
  * @size: Number of elements in @array
  */
-
 void shell_sort(int *array, size_t size)
 {
-	size_t interv = 1, f_int, b_int, swap;
+	int interv = 1, f_int, b_int, swap;
 
 	if (array == NULL)
 		return;
 
 	while (interv < size / 3)
-	{
-		interv = interv * 3 + 1;
-	}
+		interv = (interv * 3) + 1;
 
 	for (interv; interv >= 1; interv /= 3)
 	{
