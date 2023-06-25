@@ -13,15 +13,15 @@ void shell_sort(int *array, size_t size)
 	if (array == NULL)
 		return;
 
-	while (interv < size / 3)
+	while (interv < (int)size / 3)
 		interv = (interv * 3) + 1;
 
 	for (interv; interv >= 1; interv /= 3)
 	{
-		for (b_int = 0; b_int < size - interv; b_int++)
+		for (b_int = 0; b_int < (int)size - interv; b_int++)
 		{
 			f_int = interv + b_int;
-			for (f_int; f_int < size; f_int += interv)
+			for (f_int; f_int < (int)size; f_int += interv)
 			{
 				if (array[f_int] > array[b_int])
 					continue;
