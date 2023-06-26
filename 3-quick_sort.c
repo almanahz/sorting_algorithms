@@ -20,33 +20,36 @@ void swap(int *n, int *m)
  * @array: the array to be sorted
  * @low: the lowest index in the current partition
  * @high: the highest index in the current partition
+ * @size: Number of elements of the array
  * Return: the new pivot index location for partitioning
  */
 void pivot_point(int array[], int low, int high, size_t size)
 {
 	int pivot_value = array[high], i = low - 1, j, pivot;
 
-	for (j = low; j < high; j++)
+	if (low < high)
 	{
-		if (array[j] <= pivot_value)
+		for (j = low; j < high; j++)
 		{
-			i++;
-			if (i != j)
+			if (array[j] <= pivot_value)
 			{
-				swap(&array[j], &array[i]);
-				print_array(array, size);
+				i++;
+				if (i != j)
+				{
+					swap(&array[j], &array[i]);
+					print_array(array, size);
+				}
 			}
 		}
+		if (array[i + 1] > array[high])
+		{
+			swap(&array[high], &array[i + 1]);
+			print_array(array, size);
+		}
+		pivot = i + 1;
+		pivot_point(array, low, pivot - 1, size);
+		pivot_point(array, pivot + 1, high, size);
 	}
-	if (array[i + 1] > array[high])
-	{
-		swap(&array[high], &array[i + 1]);
-		print_array(array, size);
-	}
-	pivot = i + 1;
-	quick_sort(array, pivot);
-	quick_sort(array + pivot + 1, size - pivot - 1);
-	/*return (i + 1);*/
 }
 
 /**
@@ -61,9 +64,5 @@ void quick_sort(int *array, size_t size)
 
 	if (array == NULL || size == 1)
 		return;
-
-	if (low < high)
-	{
-		pivot_point(array, low, high, size);
-	}
+	pivot_point(array, low, high, size);
 }
