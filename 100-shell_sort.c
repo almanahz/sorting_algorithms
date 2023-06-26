@@ -6,32 +6,23 @@
  * @array: The array to be printed
  * @size: Number of elements in @array
  */
+
 void shell_sort(int *array, size_t size)
 {
-	int interv = 1, f_int, b_int, swap;
+	int gap = 1, i, j, tmp;
 
-	if (array == NULL)
-		return;
-
-	while (interv < (int)size / 3)
-		interv = (interv * 3) + 1;
-
-	for (interv; interv >= 1; interv /= 3)
+	while (gap < ((int)(size)))
+		gap = (3 * gap) + 1;
+	for (gap = (gap - 1) / 3; gap > 0; gap = (gap - 1) / 3)
 	{
-		for (b_int = 0; b_int < (int)size - interv; b_int++)
+		for (i = gap; i < (int)size; i += 1)
 		{
-			f_int = interv + b_int;
-			for (f_int; f_int < (int)size; f_int += interv)
-			{
-				if (array[f_int] > array[b_int])
-					continue;
-				if (array[f_int] < array[b_int])
-				{
-					swap = array[f_int];
-					array[f_int] = array[b_int];
-					array[b_int] = swap;
-				}
-			}
+			tmp = array[i];
+
+			for (j = i; j >= gap && array[j - gap] > tmp; j -= gap)
+				array[j] = array[j - gap];
+
+			array[j] = tmp;
 		}
 		print_array(array, size);
 	}
